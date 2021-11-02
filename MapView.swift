@@ -106,7 +106,6 @@ class MapView: UIViewController {
                 self.map.addOverlay(route.polyline)
                 self.map.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets(top: 60, left: 60, bottom: 60, right: 60), animated: true)
             }
-            
         }
     }
     
@@ -137,15 +136,67 @@ class MapView: UIViewController {
     
     @IBAction func goButtonTapped(_ sender: UIButton) {
         getDirections()
-        pin.alpha = 0
+    }
+    
+    @IBOutlet weak var showPinButton: UIButton!
+    @IBAction func showPinButtonTapped(_ sender: UIButton) {
+        let pinShown = presentPinButton()
+        if pinShown {
+            loadAdressLabel()
+        } else {
+            loadSlider()
+        }
+        
+        
+    }
+    
+    @IBOutlet weak var rangeSliderLabel: UILabel!
+    @IBOutlet weak var rangeSliderOutlet: UISlider!
+    @IBAction func rangeSlider(_ sender: UISlider) {
+        let range = Int(sender.value.rounded())
+        rangeSliderLabel.text = "\(range) km"
+    }
+    
+    func loadSlider() {
+        rangeSliderOutlet.isEnabled = true
+        rangeSliderOutlet.alpha = 1
+        rangeSliderLabel.alpha = 1
+        adressLabel.alpha = 0
+        rangeSliderOutlet.backgroundColor = UIColor(named: "System Background Color")
+        
+    }
+    
+    func loadAdressLabel() {
+        adressLabel.alpha = 1
+        rangeSliderLabel.alpha = 0
+        rangeSliderOutlet.isEnabled = false
+        rangeSliderOutlet.alpha = 0
+        
     }
     
 
+    func presentPinButton() -> Bool {
+        if pin.alpha == 0 {
+            pin.alpha = 1
+            showPinButton.setTitle("Hide Pin", for: .normal)
+            showPinButton.setImage(UIImage(systemName: "mappin.slash.circle"), for: .normal)
+            return true
 
+        } else {
+            pin.alpha = 0
+            showPinButton.setTitle("Show Pin", for: .normal)
+            showPinButton.setImage(UIImage(systemName: "mappin.circle"), for: .normal)
+            return false
+        }
+    }
+    
+    
 }
 
 extension MapView: CLLocationManagerDelegate {
     
+    
+    // always center current Location
 //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 //        // everytime Location Updates
 //        guard let location = locations.last else { return }
@@ -166,11 +217,6 @@ extension MapView: MKMapViewDelegate {
         let center = getCenterLocation(for: map)
         let geoCoder = CLGeocoder()
         
-        if center.isEqual(previousLocation) {
-            pin.alpha = 0
-        } else {
-            pin.alpha = 1
-        }
         
         geoCoder.cancelGeocode()
         
@@ -201,7 +247,6 @@ extension MapView: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didAdd renderers: [MKOverlayRenderer]) {
-        pin.alpha = 0
         previousLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
     }
     

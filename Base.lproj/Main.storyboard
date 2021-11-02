@@ -42,19 +42,48 @@
                                 <imageReference key="image" image="mappin" catalog="system" renderingMode="original"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6j-6w-h1S">
-                                <rect key="frame" x="301" y="822" width="100" height="31"/>
+                                <rect key="frame" x="370" y="822" width="31" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="WSZ-34-Mii"/>
+                                    <constraint firstAttribute="width" constant="31" id="WSZ-34-Mii"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Go there" cornerStyle="capsule">
-                                    <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
+                                <buttonConfiguration key="configuration" style="filled" image="arrowshape.turn.up.right.circle.fill" catalog="system" cornerStyle="capsule">
                                     <color key="baseBackgroundColor" red="0.0" green="0.5467121989" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="goButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LhZ-kN-utY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="left" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZX-X3-9gd">
+                                <rect key="frame" x="7" y="764" width="130" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="mappin.slash.circle" catalog="system" title="Hide Pin" imagePadding="7" cornerStyle="capsule" titleAlignment="automatic">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" red="0.0" green="0.5467121989" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showPinButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="knF-zs-KVL"/>
+                                </connections>
+                            </button>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="1" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="FT9-uW-FtO">
+                                <rect key="frame" x="18" y="824" width="282" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="minimumTrackTintColor" cyan="0.82694482803344727" magenta="0.14396132528781891" yellow="0.30567967891693115" black="0.37272044536251348" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                                <color key="thumbTintColor" red="0.0" green="0.5467121989" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="rangeSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="wnD-yd-mZs"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="15 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3u1-6A-FW8">
+                                <rect key="frame" x="306" y="824" width="60" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -77,6 +106,9 @@
                         <outlet property="adressLabel" destination="5ld-f5-DAA" id="jpZ-C6-G4d"/>
                         <outlet property="map" destination="qcc-71-DeR" id="qRP-rP-SFv"/>
                         <outlet property="pin" destination="8lH-2M-0Dh" id="v7p-KW-B4K"/>
+                        <outlet property="rangeSliderLabel" destination="3u1-6A-FW8" id="MCr-Z0-iF9"/>
+                        <outlet property="rangeSliderOutlet" destination="FT9-uW-FtO" id="adC-W8-zII"/>
+                        <outlet property="showPinButton" destination="NZX-X3-9gd" id="mqg-HR-dyr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -85,7 +117,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.right.circle.fill" catalog="system" width="128" height="121"/>
         <image name="mappin" catalog="system" width="105" height="128"/>
+        <image name="mappin.slash.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
