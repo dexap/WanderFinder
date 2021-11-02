@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MapView" customModule="WanderFinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qcc-71-DeR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="PzY-Xd-Uhu"/>
+                                </connections>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ld-f5-DAA">
+                                <rect key="frame" x="20" y="812" width="394" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Iv8-rk-eyi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.5467121989" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8lH-2M-0Dh">
+                                <rect key="frame" x="192" y="377.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Mqu-Fq-GxF"/>
+                                    <constraint firstAttribute="width" constant="30" id="R7i-24-IEN"/>
+                                </constraints>
+                                <imageReference key="image" image="mappin" catalog="system" renderingMode="original"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6j-6w-h1S">
+                                <rect key="frame" x="301" y="822" width="100" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="WSZ-34-Mii"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Go there" cornerStyle="capsule">
+                                    <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="baseBackgroundColor" red="0.0" green="0.5467121989" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="goButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LhZ-kN-utY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8lH-2M-0Dh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-55" id="7PX-Te-eWu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qcc-71-DeR" secondAttribute="bottom" constant="50" id="BFf-0K-n7c"/>
+                            <constraint firstItem="qcc-71-DeR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DEG-ur-YJ4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i6j-6w-h1S" secondAttribute="trailing" constant="13" id="RQa-81-cKe"/>
+                            <constraint firstItem="8lH-2M-0Dh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eIv-W9-uAT"/>
+                            <constraint firstItem="i6j-6w-h1S" firstAttribute="top" secondItem="qcc-71-DeR" secondAttribute="bottom" constant="10" id="jhQ-aP-FwC"/>
+                            <constraint firstItem="5ld-f5-DAA" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mS4-28-lBK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5ld-f5-DAA" secondAttribute="trailing" id="uQn-aK-XLY"/>
+                            <constraint firstItem="qcc-71-DeR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yWv-hr-Url"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="i6j-6w-h1S" secondAttribute="bottom" constant="9" id="yoh-hq-Xsv"/>
+                            <constraint firstItem="qcc-71-DeR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zIX-yI-Tp1"/>
+                            <constraint firstItem="5ld-f5-DAA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="zlx-tW-HJD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="adressLabel" destination="5ld-f5-DAA" id="jpZ-C6-G4d"/>
+                        <outlet property="map" destination="qcc-71-DeR" id="qRP-rP-SFv"/>
+                        <outlet property="pin" destination="8lH-2M-0Dh" id="v7p-KW-B4K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-426.08695652173918" y="118.52678571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="mappin" catalog="system" width="105" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
